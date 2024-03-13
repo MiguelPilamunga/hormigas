@@ -15,6 +15,10 @@ public class HormigaLarva extends Hormiga implements IHormigaLarva {
 
     @Override
     public Hormiga comerRealizarMetamorfosis(Alimento alimento) {
+
+        if (alimento.getEscalaRadiacion().equals("media")) {
+            return new HormigaSantacruz();
+        }
         if (alimento instanceof AlimentoCarnivoro) {
             return new HormigaSoldado();
         } else if (alimento instanceof AlimentoInsectivoro) {

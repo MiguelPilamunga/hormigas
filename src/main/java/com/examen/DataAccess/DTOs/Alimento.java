@@ -23,4 +23,8 @@ public abstract class Alimento implements AlimentoRadioactivo {
     public String toString() {
         return getClass().getSimpleName();
     }
+
+    public String getEscalaRadiacion() {
+        return escalaRadiacion;
+    }
 }

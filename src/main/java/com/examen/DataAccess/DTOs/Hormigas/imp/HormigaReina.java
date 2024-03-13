@@ -6,7 +6,7 @@ import com.examen.DataAccess.DTOs.IHormigaTipoAlimentacion;
 import com.examen.DataAccess.DTOs.impl.AlimentoCarnivoro;
 import com.examen.DataAccess.DTOs.impl.AlimentoInsectivoro;
 
-public class HormigaReina extends Hormiga implements IHormigaTipoAlimentacion {
+public class HormigaReina extends Hormiga implements IHormigaTipoAlimentacion  {
 
     @Override
     public String toString() {
