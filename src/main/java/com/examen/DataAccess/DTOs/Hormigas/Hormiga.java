@@ -5,8 +5,11 @@ public abstract class Hormiga {
     protected String estado = "VIVA";
 
     public Hormiga() {
-        throw new IllegalStateException("No se permite la instanciación directa de la clase Hormiga");
+
     }
+
+    public abstract String getEstado();
+
 
     @Override
     public String toString() {

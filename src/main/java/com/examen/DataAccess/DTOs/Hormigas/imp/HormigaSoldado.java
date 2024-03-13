@@ -8,6 +8,10 @@ import com.examen.DataAccess.DTOs.impl.AlimentoCarnivoro;
 public class HormigaSoldado extends Hormiga implements IHormigaTipoAlimentacion {
 
     @Override
+    public String getEstado() {
+        return this.estado;
+    }
+    @Override
     public String toString() {
         return super.toString() + "Soldado";
     }

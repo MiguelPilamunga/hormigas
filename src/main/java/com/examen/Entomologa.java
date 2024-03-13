@@ -1,6 +1,10 @@
 package com.examen;
 
 import com.examen.DataAccess.DTOs.Alimento;
+import com.examen.DataAccess.DTOs.Hormigas.Hormiga;
+import com.examen.DataAccess.DTOs.Hormigas.IHormigaLarva;
+import com.examen.DataAccess.DTOs.Hormigas.imp.HormigaLarva;
+import com.examen.DataAccess.DTOs.Hormigas.imp.HormigaSoldado;
 import com.examen.DataAccess.DTOs.impl.AlimentoCarnivoro;
 import com.examen.DataAccess.DTOs.impl.AlimentoInsectivoro;
 
@@ -28,23 +32,35 @@ public class Entomologa {
 
             int irradiacion = Integer.parseInt(partes[0]);
             String tipoAlimento = partes[1];
-
-            Alimento alimento;
-            if (tipoAlimento.equals("Carnívoro")) {
-                alimento = new AlimentoCarnivoro(irradiacion);
-            } else if (tipoAlimento.equals("Insectívoros")) {
-                alimento = new AlimentoInsectivoro(irradiacion);
-            } else {
-                continue;
-            }
+            Alimento alimento = new AlimentoInsectivoro(irradiacion);
             alimentos.add(alimento);
 
         }
         scanner.close();
+        System.out.println(alimentos.size());
         return alimentos;
     }
+    public static List<Hormiga> crearHormigueroLarvarioAlimentar(List<Alimento> alimentosIrradiados) {
+
+        List<Hormiga> hormiguero = new ArrayList<>();
+
+        for (int i = 0; i < 30; i++) {
+            Hormiga hormigaLarva = new HormigaLarva();
+
+            Hormiga hormiga = ((HormigaLarva) hormigaLarva).comerRealizarMetamorfosis(alimentosIrradiados.get(i));
+            hormiguero.add(hormiga);
+
+        }
+        hormiguero.forEach(hormiga -> System.out.println(hormiga.getClass().getSimpleName()+" "+hormiga.getEstado()));
+
+        return hormiguero;
+    }
+
+
+
     public static void main(String[] args) throws FileNotFoundException {
-        obtenerAlimentosEIrradiarlos().forEach(System.out::println);
+        crearHormigueroLarvarioAlimentar(obtenerAlimentosEIrradiarlos());
+
     }
     private static boolean esTipoValido(String tipoAlimento) {
         return tipoAlimento.equals("Carnívoro") || tipoAlimento.equals("Insectívoro");
